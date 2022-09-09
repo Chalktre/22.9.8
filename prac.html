@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            position: relative;
+            margin: 0 auto;
+            width: 400px;
+        }
+        
+        .head td {
+            height: 30px;
+            font-weight: bolder;
+            background-color: #999;
+        }
+
+        td {
+            border: 1px solid gray;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table cellspacing = '0'>
+        <thead>
+            <tr class="head">
+                <td>Name</td>
+                <td>subject</td>
+                <td>score</td>
+                <td>delete</td>
+            </tr>
+        </thead>
+        
+        <tbody class="tbd">
+            
+        </tbody>
+    </table>
+
+    <script>
+        var tbd = document.querySelector('.tbd');
+
+        var datas = [
+            {
+            name: 'wss',
+            subject: 'JavaScript',
+            score: '90'
+        },
+        {
+            name: 'ws',
+            subject: 'JavaScript',
+            score: '80'
+        },
+        {
+            name: 'w',
+            subject: 'JavaScript',
+            score: '70'
+        }
+    ]
+
+    for (var i = 0; i < datas.length; i++) {
+        var tr = document.createElement('tr');
+        // var n = document.createElement('td')
+        // var sb = document.createElement('td')
+        // var sc = document.createElement('td')
+        // var de = document.createElement('a')
+        tbd.appendChild(tr)      
+        
+        for (var k in datas[i]) {
+            var td = document.createElement('td');
+            td.innerHTML = datas[i][k];
+            tr.appendChild(td)
+        }
+        // n.innerHTML = datas[i].name;
+        // sb.innerHTML = datas[i].subject;
+        // sc.innerHTML = datas[i].score;
+        // de.innerHTML = 'delete';
+
+        // tr.appendChild(n) 
+        // tr.appendChild(sb) 
+        // tr.appendChild(sc)
+        // tr.appendChild(de)
+        var del = document.createElement('td')
+        del.innerHTML = "<a href = 'javascript:;' class = 'del'>delete</a>" 
+        tr.appendChild(del)
+
+    }
+    
+    var dels = document.querySelectorAll('.del');
+    for (var i = 0; i < dels.length; i++) {
+        dels[i].onclick = function() {
+            tbd.removeChild(this.parentNode.parentNode)
+        }
+    }
+
+    </script>
+</body>
+</html>
